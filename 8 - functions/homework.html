@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hw7</title>
+</head>
+<body>
+    <script>
+        var str = 'abcdefghijklmnopqrstuvwxyz';
+        var elCount = 10, min = 2, max = 10;
+        var words = []; normWords = {};
+
+        for (var index = elCount; index > 0; index--) {
+            var newWord='';
+            var lettersCount = Math.round(Math.random() * (max - min) + min);
+            for (var letterIteration = lettersCount; letterIteration > 0; letterIteration--) {
+                var letterIndex = Math.round(Math.random() * (str.length - 1));
+                newWord += str[letterIndex];
+                
+            }
+        words.push(newWord);
+        }
+
+        for (var index = 0; index < words.length; index++) {
+            var element = words[index];
+            if (!normWords[element.length]) {
+            normWords[element.length] = [element];
+            } else {
+                normWords[element.length].push(element);
+            }
+            
+        }
+        console.log(normWords);
+
+
+    </script>
+</body>
+</html>
