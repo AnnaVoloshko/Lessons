@@ -15,7 +15,7 @@ var pagination = document.getElementById('pagination');
 
 
 function requestData(e, data) {
-    request('get', 'https://swapi.co/api/people/?page=', function (data) {
+    request('get', 'https://swapi.co/api/people/?page=' + page, function (data) {
         var paginationArray = drawPagination(pagination, data.body.count, 10, page);
         pagination.innerHTML = paginationArray.join('');
     });
