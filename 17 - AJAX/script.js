@@ -8,25 +8,16 @@ xhr.addEventListener('load', function (e){
 xhr.send();
 */
 //console.log(xhr);
-    // CORS - распространение данных между доменами (не дает возможность создать вредоносный запрос)
+// CORS - распространение данных между доменами (не дает возможность создать вредоносный запрос)
 //___________________________________________________________________________________________________________
-function request(method, url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url, true);
-    xhr.addEventListener('load', function (e){
-        callback({
-            body: JSON.parse(e.target.response),
-            status: e.target.status
-        })
-    });
-    
-    xhr.addEventListener('error', function (e){
-        errorCallback && errorCallback(e);
-    });
-    
-    xhr.send();
-}
 
-request('get', 'https://swapi.co/api/people/', function (data){
-    console.log(data.body);
-})
+var pagination = document.getElementById('pagination');
+
+
+function requestData(e, data) {
+    request('get', 'https://swapi.co/api/people/?page=', function (data) {
+        var paginationArray = drawPagination(pagination, data.body.count, 10, page);
+        pagination.innerHTML = paginationArray.join('');
+    });
+    e.preventDefault();
+}
