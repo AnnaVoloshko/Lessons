@@ -19,7 +19,7 @@
   "scripts": {
     "build": "npx webpack",
     "start": "npx webpack-dev-server",
-    "build_production": "npx webpack --config webpack.config.js"
+    "build_production": "npx webpack-dev-server"
   },
   "keywords": [],
   "author": "",
