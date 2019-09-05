@@ -1,26 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Dashboard from './components/dashboard';
+import CardDetail from './components/card-detail';
+import Navigation from './components/navigation';
 
-const listOfCards = [
-    {
-        title: 'Title1',
-        body: 'Content1',
-        footer: 'Footer1'
-    }, {
-        title: 'Title2',
-        body: 'Content2',
-        footer: 'Footer2'
-    }, {
-        title: 'Title3',
-        body: 'Content3',
-        footer: 'Footer3'
-    }
-]
 
-ReactDOM.render(<App cards={listOfCards} />, document.getElementById('root'));
+ReactDOM.render(
+    <Router>
+        <App>
+            <Navigation />
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/cards/:id" component={CardDetail} />
+        </App>
+    </Router>, document.getElementById('root'));
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
